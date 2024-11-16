@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="imagens/logo.jpg" type="image/x-icon">
+    <title>Banco do Povo - Tela de cadastro</title>
+    <style>
+        label {
+            font-size: 20px;
+            display: block;
+            margin: 10px 0 5px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .logo {
+            height: 200px;
+            width: 200px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(6, 52, 255, 0.685);
+            position: absolute;
+            top: 50px;
+            left: 95px;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="imagens/logo.jpg" class="logo" alt="logo">
+    <div class="container">
+        <h1>Cadastro de Usuário</h1>
+        <form id="userForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('userForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Captura os dados do formulário
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+
+            // Armazena os dados no localStorage
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('telefone', telefone);
+            localStorage.setItem('email', email);
+
+            alert('Cadastro realizado com sucesso ✔');
+
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
