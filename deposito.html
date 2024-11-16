@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/logo.jpg" type="image/x-icon">
+    <title>Banco do Povo - Tela de Depósito</title>
+    <style>
+        body {
+            background-color: rgba(231, 228, 28, 0.836);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            height: 60px;
+            width: 100%;
+            background-color: #1725f1b9;
+            box-shadow: 0px 4px 10px rgba(1, 48, 255, 0.658);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .logo {
+            height: 200px;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.685);
+            position: absolute;
+            top: 0px;
+            left: 490px;
+        }
+
+        .voltar {
+            height: 40px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 2px solid rgb(92, 91, 91);
+            background-color: rgb(59, 59, 59);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .voltar:hover {
+            color: white;
+            background-color: rgb(39, 39, 39);
+        }
+
+        h1 {
+            color: rgb(0, 0, 0);
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            height: 30px;
+            width: 200px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .containerDepo {
+            height: auto;
+            width: 300px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            top: 270px;
+            left: calc(45% - 150px);
+        }
+
+        button {
+            margin-top: 20px;
+            height: 40px;
+            width: 120px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(59, 59, 59);
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(39, 39, 39);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <a href="index.html" class="voltar">Voltar</a>
+    </div>
+    <img src="imagens/logo.jpg" class="logo" alt="logo">
+    <div class="containerDepo">
+        <h1>Depositar:<br>Digite o valor</h1>
+        <input type="number" id="valorDeposito" placeholder="0.0" step="0.01">
+        <button onclick="salvarDeposito()">Depositar</button>
+    </div>
+    <script>
+        function salvarDeposito() {
+            // Obtém o valor do campo de entrada
+            const valor = document.getElementById('valorDeposito').value;
+
+            // Valida o valor
+            if (valor === '' || isNaN(valor) || parseFloat(valor) <= 0) {
+                alert('Digite o valor para depositar.');
+                return;
+            }
+
+            // Obtém o valor atual do saldo (se existir)
+            let saldoAtual = parseFloat(localStorage.getItem('deposito')) || 0;
+
+            // Soma o novo depósito ao saldo existente
+            saldoAtual += parseFloat(valor);
+
+            // Salva o novo saldo no localStorage
+            localStorage.setItem('deposito', saldoAtual);
+
+            // Exibe um alerta de sucesso
+            alert('Depósito realizado com sucesso ✔');
+
+            // Redireciona para a página principal
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>
