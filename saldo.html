@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/logo.jpg" type="image/x-icon">
+    <title>Banco do Povo - Saldo</title>
+    <style>
+        body {
+            background-color: rgba(231, 228, 28, 0.836);
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            height: 60px;
+            width: 100%;
+            background-color: #1725f1b9;
+            box-shadow: 0px 4px 10px rgba(1, 48, 255, 0.658);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .logo {
+            height: 200px;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.685);
+            position: absolute;
+            top: 0px;
+            left: 490px;
+        }
+
+        .voltar {
+            height: 40px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 2px solid rgb(92, 91, 91);
+            background-color: rgb(59, 59, 59);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .voltar:hover {
+            color: white;
+            background-color: rgb(39, 39, 39);
+        }
+
+        .containerSaldo {
+            height: auto;
+            width: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            top: 250px; /* Aumentei o valor para afastar mais da logo */
+            left: calc(45% - 150px);
+        }
+
+        h1 {
+            color: rgb(0, 0, 0);
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .saldo {
+            font-size: 24px;
+            color: rgb(59, 59, 59);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        <a href="index.html" class="voltar">Voltar</a>
+    </div>
+    <img src="imagens/logo.jpg" class="logo" alt="logo">
+
+    <div class="containerSaldo">
+        <h1>Saldo</h1>
+        <div class="saldo" id="saldo">
+            <!-- O valor do saldo será mostrado aqui -->
+        </div>
+    </div>
+
+    <script>
+        // Obtém o valor do depósito armazenado no localStorage
+        const saldo = localStorage.getItem('deposito');
+
+        // Se o valor não estiver definido, mostra "Nenhum depósito realizado"
+        if (saldo) {
+            document.getElementById('saldo').innerText = `R$ ${parseFloat(saldo).toFixed(2)}`;
+        } else {
+            document.getElementById('saldo').innerText = 'Nenhum depósito realizado.';
+        }
+    </script>
+</body>
+
+</html>
